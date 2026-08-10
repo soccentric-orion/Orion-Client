@@ -3,7 +3,7 @@ IMAGE_NAME ?= orion
 .PHONY: build run clean delete-images
 
 build:
-	@echo "Building Docker image $(IMAGE_NAME) for Raspberry Pi 5 (ARM64)..."
+	@echo "Building Docker image $(IMAGE_NAME) for STM32MP157F (ARM64)..."
 	docker buildx build --platform linux/arm64 --load --build-arg UID=$(shell id -u) --build-arg GID=$(shell id -g) -t $(IMAGE_NAME) .
 
 run:

@@ -41,7 +41,7 @@ Orion-Client provides:
 - **Log Collection**: Tails specified log files and forwards entries to server
 - **Diagnostic Socket**: Local diagnostic interface for health monitoring
 
-**Target Platforms**: Raspberry Pi 5 (BCM2712/RP1), NVIDIA Jetson, or any ARM64/x86_64 Linux system with GPIO/hardware access.
+**Target Platforms**: STM32MP157F (STM32MP157F/), STM32MP157F, or any ARM64/x86_64 Linux system with GPIO/hardware access.
 
 ---
 
@@ -93,7 +93,7 @@ Orion-Client provides:
 ## System Requirements
 
 ### Hardware
-- **Minimum**: ARM64 or x86_64 processor (Pi 5, Jetson, or similar)
+- **Minimum**: ARM64 or x86_64 processor (Pi 5, STM32MP157F, or similar)
 - **Recommended**: 1 GB RAM, 2 GB storage for spool database
 
 ### Operating System
@@ -217,7 +217,7 @@ cmake --build . --parallel $(nproc)
 
 ### Docker Build (Cross-compilation)
 
-For cross-compiling from x86_64 to ARM64 (Raspberry Pi 5):
+For cross-compiling from x86_64 to ARM64 (STM32MP157F):
 
 1. **Build Docker image**:
    ```bash
@@ -677,7 +677,7 @@ spdlog::set_level(spdlog::level::debug);  // Change from ::info
 
 ## Acknowledgments
 
-- Built for IV&V hardware validation on Raspberry Pi 5 and NVIDIA Jetson platforms
+- Built for IV&V hardware validation on STM32MP157F and STM32MP157F platforms
 - Uses gRPC for efficient client-server communication
 - Protocol Buffers for portable serialization
 - SQLite3 for durable local storage
