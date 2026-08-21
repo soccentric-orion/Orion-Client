@@ -1,14 +1,28 @@
 # Orion-Client
 
-## Project Summary
+## 1. Project Summary
 
-Orion-Client is the on-device C++17 daemon that turns Orion hardware-validation requests into executable IV&V work. It loads TOML configuration, connects to Orion-Server through a bidirectional gRPC stream, accepts local `HalService` requests for SDK and integration callers, dispatches module work through an adapter registry, and returns structured `hal::TestResult` data. Transport, execution, persistence, and device access are separated so RPC handlers do not call hardware directly.
+Orion-Client is the on-device C++17 daemon that turns Orion hardware-validation requests into executable IV&V work.
 
-The registry contains 35 HAL-backed adapter translation units and a stub path for unavailable modules. `RunOrchestrator` stamps sequences and timestamps, batches results, and sends them to the stream. `Spool` uses SQLite WAL storage to buffer result and log batches during outages; `Janitor` removes acknowledged or expired data within configured limits. `LogCollector` tails configured files and ships log entries through the durable path. `DiagSocket` provides local JSON status, and the systemd unit runs the daemon as a service.
+- It loads TOML configuration and connects to Orion-Server through a bidirectional gRPC stream.
+- It accepts local `HalService` requests for SDK and integration callers.
+- It dispatches module work through an adapter registry and returns structured `hal::TestResult` data.
+- Transport, execution, persistence, and device access are separated so RPC handlers do not call hardware directly.
 
-The repository includes protobuf/gRPC generated contracts, CMake and Make entry points, a Docker cross-build context, sample configurations, and two focused GoogleTest targets. Tests cover result serialization and orchestrator sequencing with an in-memory spool and no-op stream. Hardware-dependent adapter behavior is implemented but is not equivalent to hardware-in-the-loop verification. The commands below describe repository procedures and do not claim deployment verification.
+The registry contains 35 HAL-backed adapter translation units and a stub path for unavailable modules.
 
-## Feature Inventory
+- `RunOrchestrator` stamps sequences and timestamps, batches results, and sends them to the stream.
+- `Spool` uses SQLite WAL storage to buffer result and log batches during outages; `Janitor` removes acknowledged or expired data within configured limits.
+- `LogCollector` tails configured files and ships log entries through the durable path.
+- `DiagSocket` provides local JSON status, and the systemd unit runs the daemon as a service.
+
+The repository includes protobuf/gRPC generated contracts, CMake and Make entry points, a Docker cross-build context, sample configurations, and two focused GoogleTest targets.
+
+- Tests cover result serialization and orchestrator sequencing with an in-memory spool and no-op stream.
+- Hardware-dependent adapter behavior is implemented but is not equivalent to hardware-in-the-loop verification.
+- The commands below describe repository procedures and do not claim deployment verification.
+
+## 2. Feature Status
 
 | # | Name / Description | Implemented? | Test Coverage? | Manual Test |
 |---:|---|---|---|---|
@@ -24,7 +38,7 @@ The repository includes protobuf/gRPC generated contracts, CMake and Make entry 
 | 10 | Unix diagnostic socket and JSON status | Implemented | Unknown | [ ] Manual verification required |
 | 11 | systemd installation and sample config | Implemented | Unknown | [ ] Manual verification required |
 
-## Build and Test
+## 3. Build and Test
 
 ```bash
 make configure
