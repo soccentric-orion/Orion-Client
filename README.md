@@ -41,9 +41,8 @@ The repository includes protobuf/gRPC generated contracts, CMake and Make entry 
 ## 3. Build and Test
 
 ```bash
-make configure
-make build
-ctest --test-dir build/native --output-on-failure
+make build          # Docker cross-build (ARM64 target) — the default and only build path
+make test           # ctest inside Docker (ARM64 via QEMU)
 ```
 
 Docker cross-build helpers live under `docker/`; runtime settings are in `conf/client.conf.sample`.
