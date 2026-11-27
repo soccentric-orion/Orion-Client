@@ -37,8 +37,8 @@ This Makefile does not define a packaging target. Build outputs are under `build
 
 ## 7. Deploy, Install, and Run
 ```bash
-make deploy-a IP_A=192.168.1.3 USER=nvidia PASS='<target-password>'
-make deploy-b IP_B=192.168.1.13 USER=nvidia PASS='<target-password>'
+make deploy-a IP_A=192.168.1.3 HAL_SSH_USER=root HAL_SSH_PASS='<target-password>'
+make deploy-b IP_B=192.168.1.13 HAL_SSH_USER=root HAL_SSH_PASS='<target-password>'
 make deploy
 make run-a
 make run-b
